@@ -11,6 +11,14 @@
     </button>
     <br />
     <p v-if="heardPhrase">Я услышала: {{ heardPhrase }}</p>
+    <div v-if="heardPhrase.includes('квадрат')" class="square"></div>
+    <div v-if="heardPhrase.includes('Круг')" class="circle"></div>
+    <div v-if="heardPhrase.includes('треугольник')" class="triangle-top"></div>
+    <div v-if="heardPhrase.includes('прямоугольник')" class="rect"></div>
+    <div v-if="heardPhrase.includes('шестиугольник')" class="hexagon"></div>
+    <div v-if="heardPhrase.match(/\d+ ?(\+?-?\*?\/?)? ?/g)" class="number">
+      {{ heardPhrase.match(/\d+ ?(\+?-?\*?\/?)? ?/g) }}
+    </div>
   </div>
 </template>
 
@@ -156,5 +164,55 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: rgb(202, 177, 35);
+}
+.triangle-top {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid #f95959;
+}
+.rect {
+  width: 300px;
+  height: 100px;
+  background-color: rgb(60, 161, 94);
+}
+.hexagon {
+  width: 90px;
+  height: 50px;
+  background: #3e92cc;
+  position: relative;
+}
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #3e92cc;
+  top: 0;
+  left: 0;
+}
+.hexagon:before {
+  transform: rotate(60deg);
+}
+
+.hexagon:after {
+  transform: rotate(-60deg);
+}
+
+.number {
+  font-size: 45px;
 }
 </style>
