@@ -10,13 +10,13 @@
   </div>
 </template>
 <script>
-import { Hands, HAND_CONNECTIONS } from "@mediapipe/hands";
-import { Camera } from "@mediapipe/camera_utils";
-import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
+import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
+import { Camera } from '@mediapipe/camera_utils';
+import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 // from: https://stackoverflow.com/questions/69009153/mediapipe-javascript-to-vue-component
 
 export default {
-  name: "HandModel",
+  name: 'HandModel',
   data() {
     return {
       number: null,
@@ -31,7 +31,7 @@ export default {
     },
   },
   mounted() {
-    this.ctx = this.$refs.output_canvas.getContext("2d");
+    this.ctx = this.$refs.output_canvas.getContext('2d');
     this.init();
   },
   methods: {
@@ -74,12 +74,12 @@ export default {
       if (results.multiHandLandmarks) {
         for (const landmarks of results.multiHandLandmarks) {
           drawConnectors(this.ctx, landmarks, HAND_CONNECTIONS, {
-            color: "#00FF00",
+            color: '#00FF00',
             lineWidth: 5,
           });
           if (draw) {
             drawLandmarks(this.ctx, landmarks, {
-              color: "#FF0000",
+              color: '#FF0000',
               lineWidth: 2,
             });
           }
